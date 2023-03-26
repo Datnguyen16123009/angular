@@ -1,0 +1,16 @@
+<div>
+    <p-button (click)="showDialog()" icon="pi pi-shopping-cart"></p-button>
+    <p-dialog header="Giỏ Hàng" [(visible)]="visible" [style]="{width: '40vw'}" [modal]="true">
+        <div *ngFor="let product of productList">
+            <h2>{{ product.name }}</h2>
+            <p>Price: {{ product.price }}</p>
+            <p>Số lượng: {{ product.soLuong }}</p>
+            <p>Tổng: {{ product.tong }}</p>
+        </div>
+        <div>
+            <h2>Tổng Tất Cả: {{ get_all_total() }}</h2>
+        </div>
+        <p-button (click)="Checkout()" icon="pi pi-check-circle" width = "100%" label = "Checkout"></p-button>
+    </p-dialog>
+    <p-toast></p-toast>
+</div>
