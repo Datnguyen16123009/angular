@@ -33,7 +33,20 @@ export class GioHangComponent {
     this.messageService.add({
       severity: 'success',
       summary: 'Success',
-      detail: 'Message Content',
+      detail: 'PAY SUCCESS',
     });
+  }
+
+  incrementQuantity(product: Product) {
+    product.soLuong++;
+    product.tong = product.soLuong * product.price;
+  }
+
+  decrementQuantity(product: Product) {
+    if (product.soLuong > 0) {
+      product.soLuong--;
+      product.tong = product.soLuong * product.price;
+    }
+    return product.soLuong;
   }
 }

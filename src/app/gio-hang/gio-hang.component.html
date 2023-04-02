@@ -1,16 +1,20 @@
 <div>
-    <p-button (click)="showDialog()" icon="pi pi-shopping-cart"></p-button>
+    <p-button class="cart-button" (click)="showDialog()" icon="pi pi-shopping-cart"><span *ngIf="productList.length > 0">{{ productList.length }}</span></p-button>
     <p-dialog header="Giỏ Hàng" [(visible)]="visible" [style]="{width: '40vw'}" [modal]="true">
         <div *ngFor="let product of productList">
             <h2>{{ product.name }}</h2>
             <p>Price: {{ product.price }}</p>
-            <p>Số lượng: {{ product.soLuong }}</p>
+            <p>Số lượng: 
+                <button (click)="decrementQuantity(product)">-</button>
+                <input type="text" [(ngModel)]="product.soLuong">
+                <button (click)="incrementQuantity(product)">+</button>
+            </p>
             <p>Tổng: {{ product.tong }}</p>
         </div>
         <div>
             <h2>Tổng Tất Cả: {{ get_all_total() }}</h2>
         </div>
-        <p-button (click)="Checkout()" icon="pi pi-check-circle" width = "100%" label = "Checkout"></p-button>
+        <p-button (click)="Checkout()" icon="pi pi-check-circle" width = "100%" label = "Pay"></p-button>
     </p-dialog>
     <p-toast></p-toast>
 </div>

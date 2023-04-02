@@ -15,7 +15,9 @@ export class ShopCardComponent {
   }
 
   decrementQuantity() {
-    this.soLuong--;
+    if (this.soLuong > 0) {
+      this.soLuong--;
+    }
   }
 
   addToCart(product: any) {
